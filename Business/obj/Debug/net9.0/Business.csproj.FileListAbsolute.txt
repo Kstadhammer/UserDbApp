@@ -1,0 +1,11 @@
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/bin/Debug/net9.0/Business.deps.json
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/bin/Debug/net9.0/Business.dll
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/bin/Debug/net9.0/Business.pdb
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.AssemblyInfoInputs.cache
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.AssemblyInfo.cs
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.csproj.CoreCompileInputs.cache
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.dll
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/refint/Business.dll
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/Business.pdb
+/Users/kimhammerstad/Downloads/EC Utbildning HT 2024/Kurs 3 - C#/UserDataBaseAppComplete/Business/obj/Debug/net9.0/ref/Business.dll
