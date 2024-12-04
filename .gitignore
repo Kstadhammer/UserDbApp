@@ -81,6 +81,15 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+project.assets.json
+*.nuget.cache
+*.dgspec.json
+nuget.config
+packages-microsoft-prod.deb
+project.packagespec.json
+rider.project.restore.info
+rider.project.model.nuget.info
+NuGet.Config
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
