@@ -11,8 +11,22 @@ public class FileService : IFileService
 
     public FileService(string saveFileName = "users.json")
     {
-        string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
-        string projectDirectory = Directory.GetParent(baseDirectory)?.Parent?.Parent?.FullName ?? "";
+        /*
+            Help was needed to get the correct folder path,
+            as it was being put in the .NET 9.0 folder.
+        
+            The correct folder structure is:
+              - Start: C:\MyProject\bin\Debug\net9.0
+              - Up one level: C:\MyProject\bin\Debug
+              - Up two levels: C:\MyProject\bin
+              - Up three levels: C:\MyProject
+              
+              Used Claude AI for this
+        */
+        string baseDirectory =
+            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
+        string projectDirectory =
+            Directory.GetParent(baseDirectory)?.Parent?.Parent?.FullName ?? "";
         _saveDirectory = Path.Combine(projectDirectory, "Business/Data");
         _saveFilePath = Path.Combine(_saveDirectory, saveFileName);
     }
