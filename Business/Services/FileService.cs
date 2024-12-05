@@ -9,15 +9,17 @@ public class FileService : IFileService
     private readonly string _saveDirectory;
     private readonly string _saveFilePath;
 
-    public FileService(string saveDirectory = "Data", string saveFileName = "users.json")
+    public FileService(string saveFileName = "users.json")
     {
-        _saveDirectory = saveDirectory;
+        string baseDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
+        string projectDirectory = Directory.GetParent(baseDirectory)?.Parent?.Parent?.FullName ?? "";
+        _saveDirectory = Path.Combine(projectDirectory, "Business/Data");
         _saveFilePath = Path.Combine(_saveDirectory, saveFileName);
     }
 
     public void SaveUserToFile(string content)
     {
-        if (Directory.Exists(_saveDirectory))
+        if (!Directory.Exists(_saveDirectory))
         {
             Directory.CreateDirectory(_saveDirectory);
         }

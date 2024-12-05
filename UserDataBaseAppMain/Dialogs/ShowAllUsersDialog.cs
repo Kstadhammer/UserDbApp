@@ -27,5 +27,7 @@ public class ShowAllUsersDialog(IUserService userService) : IShowAllUsersDialog
         }
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
+
+        //implement method for empty list
     }
 }

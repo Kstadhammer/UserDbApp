@@ -34,10 +34,12 @@ public class UserService : IUserService
         user.Id = Guid.NewGuid().ToString();
         _users.Add(user);
         _fileService.SaveUserToFile(JsonSerializer.Serialize(_users));
+        LoadUsers(); // Reload users after saving
     }
 
     public IEnumerable<User> GetUsers()
     {
+        LoadUsers(); // Reload users from file before returning
         return _users;
     }
 }

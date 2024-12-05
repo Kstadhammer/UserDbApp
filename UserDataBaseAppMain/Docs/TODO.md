@@ -21,7 +21,9 @@
 - [x] Create menu system
   - [x] List all contacts
   - [x] Create new contact
-  - [] Exit application
+  - [ ] Edit existing contact
+  - [ ] Delete contact
+  - [x] Exit application
 
 ### Testing
 - [ ] Create test project
@@ -56,7 +58,7 @@
 - [ ] Service Pattern:
   - [x] IFileService
   - [x] IUserService
-  - [ ] IValidationService
+  - [x ] IValidationService
 - [ ] Factory Pattern:
   - [ ] ContactFactory
   - [ ] ServiceFactory
@@ -70,7 +72,7 @@
   - [ ] Data validation
 
 ## Additional Tasks
-- [ ] Add input validation
+- [x] Add input validation
 - [ ] Add error handling
 - [ ] Add logging
 - [ ] Add user feedback messages

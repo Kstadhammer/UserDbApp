@@ -11,8 +11,11 @@ namespace UserDataBaseAppMain.Dialogs
         public void ShowDialog()
         {
             Console.Clear();
-            Console.WriteLine("Search for a user");
-            Console.WriteLine("Enter the user's first name: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Search for a existing user:");
+            Console.Write("Enter the user's first name: ");
+            Console.ResetColor();
+
             var firstName = Console.ReadLine();
         }
     }
