@@ -27,10 +27,10 @@ public class LoginUserDialog(IUserService userService) : ILoginUserDialog
                     ShowLoginDialog();
                     break;
                 case 1:
-                    _createLoginUserDialog.ShowDialog();
+                    //_createLoginUserDialog.ShowDialog();
                     break;
                 case 2:
-                    _exitUserDialog.ShowDialog();
+                    //_exitUserDialog.ShowDialog();
                     break;
                 default:
                     Console.WriteLine("Invalid option. Please try again.");
@@ -41,10 +41,11 @@ public class LoginUserDialog(IUserService userService) : ILoginUserDialog
 
     public void ShowLoginDialog()
     {
-        Console.WriteLine("Login Dialog");
-        Console.WriteLine("Enter username: ");
+        Console.Clear();
+        Console.WriteLine("Please login to your account.");
+        Console.Write("Enter username: ");
         var username = Console.ReadLine() ?? string.Empty;
-        Console.WriteLine("Enter password: ");
+        Console.Write("Enter password: ");
         var password = Console.ReadLine() ?? string.Empty;
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -54,6 +55,6 @@ public class LoginUserDialog(IUserService userService) : ILoginUserDialog
         }
 
         var user = _userService.Login(username, password);
-        Console.WriteLine(user);
+        Console.ReadKey();
     }
 }

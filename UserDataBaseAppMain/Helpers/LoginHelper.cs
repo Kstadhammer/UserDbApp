@@ -67,13 +67,16 @@ public static class LoginHelper
                 {
                     selectedIndex = loginOptions.Length - 1;
                 }
-                else if (keyPressed == ConsoleKey.DownArrow)
+
+                //had some help from claude to fix this, my first try was to use the
+                //selectedIndex-- but it wouldn't work
+            }
+            else if (keyPressed == ConsoleKey.DownArrow)
+            {
+                selectedIndex++;
+                if (selectedIndex >= loginOptions.Length)
                 {
-                    selectedIndex++;
-                    if (selectedIndex >= loginOptions.Length)
-                    {
-                        selectedIndex = 0;
-                    }
+                    selectedIndex = 0;
                 }
             }
         } while (keyPressed != ConsoleKey.Enter);

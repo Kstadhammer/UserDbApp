@@ -33,7 +33,7 @@ public class Program
 
         var loginUserDialog = scope.ServiceProvider.GetRequiredService<ILoginUserDialog>();
         loginUserDialog.ShowLoginMenu();
-        //var mainMenuDialog = scope.ServiceProvider.GetRequiredService<IMainMenuDialog>();
-        //mainMenuDialog.ShowUserMenu();
+        var mainMenuDialog = scope.ServiceProvider.GetRequiredService<IMainMenuDialog>();
+        mainMenuDialog.ShowUserMenu();
     }
 }
