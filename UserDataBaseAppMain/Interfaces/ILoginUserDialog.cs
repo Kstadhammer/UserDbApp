@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UserDataBaseAppMain.UI
+namespace UserDataBaseAppMain.Interfaces
 {
-    public class LoginUI
+    public interface ILoginUserDialog
     {
-        
+        void ShowLoginMenu();
     }
 }

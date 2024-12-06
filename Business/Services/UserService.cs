@@ -42,4 +42,12 @@ public class UserService : IUserService
         LoadUsers(); // Reload users from file before returning
         return _users;
     }
+
+    //Got help from claude to fix the login method and also implenting it in IUserService
+
+    public User? Login(string username, string password)
+    {
+        LoadUsers();
+        return _users.FirstOrDefault(u => u.Username == username && u.Password == password);
+    }
 }

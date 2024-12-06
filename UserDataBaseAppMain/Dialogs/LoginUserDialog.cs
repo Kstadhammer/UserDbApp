@@ -13,18 +13,18 @@ public class LoginUserDialog(IUserService userService) : ILoginUserDialog
 
     private int _selectedIndex = 0;
 
-    private readonly string[] _loginOptions = { "1. Login", "2. Register", "3. Exit" };
+    private readonly string[] _loginOptions = ["1. Login", "2. Register", "3. Exit"];
 
     public void ShowLoginMenu()
     {
         while (true)
         {
-            _selectedIndex = LoginHelper.ShowMenu(_loginOptions, _selectedIndex);
+            _selectedIndex = LoginHelper.ShowLoginMenu(_loginOptions, _selectedIndex);
 
             switch (_selectedIndex)
             {
                 case 0:
-                    _loginUserDialog.ShowDialog();
+                    ShowLoginDialog();
                     break;
                 case 1:
                     _createLoginUserDialog.ShowDialog();
@@ -37,5 +37,23 @@ public class LoginUserDialog(IUserService userService) : ILoginUserDialog
                     break;
             }
         }
+    }
+
+    public void ShowLoginDialog()
+    {
+        Console.WriteLine("Login Dialog");
+        Console.WriteLine("Enter username: ");
+        var username = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("Enter password: ");
+        var password = Console.ReadLine() ?? string.Empty;
+
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        {
+            Console.WriteLine("Username and password cannot be empty");
+            return;
+        }
+
+        var user = _userService.Login(username, password);
+        Console.WriteLine(user);
     }
 }
