@@ -13,21 +13,32 @@ public class ShowAllUsersDialog(IUserService userService) : IShowAllUsersDialog
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Here are all the existing users:\n");
         Console.ResetColor();
-        foreach (var user in userService.GetUsers()!)
+
+        var users = userService.GetUsers();
+
+        if (users == null || !users.Any())
         {
-            Console.WriteLine($"Created: {user.TimeCreated}");
-            Console.WriteLine($"Id: {user.Id}");
-            Console.WriteLine($"Name: {user.FirstName} {user.LastName}");
-            Console.WriteLine($"Email: {user.Email}");
-            Console.WriteLine($"Phone number: {user.PhoneNumber}");
-            Console.WriteLine($"Address: {user.Address}");
-            Console.WriteLine($"Postal code: {user.PostalCode}");
-            Console.WriteLine($"City: {user.City}");
-            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("There are no users to display.");
+            Console.ResetColor();
         }
+        else
+        {
+            foreach (var user in users)
+            {
+                Console.WriteLine($"Created: {user.TimeCreated}");
+                Console.WriteLine($"Id: {user.Id}");
+                Console.WriteLine($"Name: {user.FirstName} {user.LastName}");
+                Console.WriteLine($"Email: {user.Email}");
+                Console.WriteLine($"Phone number: {user.PhoneNumber}");
+                Console.WriteLine($"Address: {user.Address}");
+                Console.WriteLine($"Postal code: {user.PostalCode}");
+                Console.WriteLine($"City: {user.City}");
+                Console.WriteLine();
+            }
+        }
+
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
-
-        //implement method for empty list
     }
 }
