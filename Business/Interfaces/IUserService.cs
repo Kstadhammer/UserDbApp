@@ -7,4 +7,5 @@ public interface IUserService
 {
     void CreateUser(UserDto userDto);
     IEnumerable<UserResponseDto> GetUsers();
+    UserResponseDto GetUserByFirstName(string firstName);
 }

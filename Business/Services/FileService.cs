@@ -22,6 +22,8 @@ public class FileService : IFileService
               - Up three levels: C:\MyProject
               
               Used Claude AI for this
+
+              Some of the code is used from Hans video on how to save to json file
         */
         string baseDirectory =
             Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";

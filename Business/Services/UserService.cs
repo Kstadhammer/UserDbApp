@@ -72,4 +72,26 @@ public class UserService : IUserService
             City = user.City,
         });
     }
+
+    public UserResponseDto GetUserByFirstName(string firstName)
+    {
+        LoadUsers();
+        var user = _users.FirstOrDefault(user => user.FirstName == firstName);
+        if (user != null)
+        {
+            return new UserResponseDto
+            {
+                Id = user.Id,
+                TimeCreated = user.TimeCreated,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address,
+                PostalCode = user.PostalCode,
+                City = user.City,
+            };
+        }
+        return new UserResponseDto();
+    }
 }

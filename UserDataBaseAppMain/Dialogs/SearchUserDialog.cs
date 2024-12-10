@@ -17,6 +17,15 @@ namespace UserDataBaseAppMain.Dialogs
             Console.ResetColor();
 
             var firstName = Console.ReadLine();
+            var user = userService.GetUserByFirstName(firstName);
+            if (user != null)
+            {
+                Console.WriteLine($"User found: {user.FirstName} {user.LastName}");
+            }
+            else
+            {
+                Console.WriteLine("User not found.");
+            }
         }
     }
 }
