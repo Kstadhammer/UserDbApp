@@ -25,7 +25,6 @@ public class EditUserDialog(IUserService userService)
             {
                 Console.WriteLine($"Id: {user.Id}");
                 Console.WriteLine($"Name: {user.FirstName} {user.LastName}");
-                
             }
         }
         else if (userInput.ToUpper() == "E")

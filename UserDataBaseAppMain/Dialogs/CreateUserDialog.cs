@@ -1,5 +1,6 @@
 using Business.Interfaces;
 using Business.Models;
+using Business.Models.DTOs;
 using UserDataBaseAppMain.Interfaces;
 
 namespace UserDataBaseAppMain.Dialogs
@@ -11,66 +12,79 @@ namespace UserDataBaseAppMain.Dialogs
 
         public void ShowDialog()
         {
-            var user = new User();
+            var userDto = new UserDto();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Welcome to the create a user interface\n");
             Console.ResetColor();
 
-            Console.Write("Enter the user's first name: ");
-            user.FirstName = Console.ReadLine()!;
-            while (!_validationService.ValidateFirstName(user.FirstName))
+            Console.Write("Enter First Name: ");
+            userDto.FirstName = Console.ReadLine()!;
+            while (!_validationService.ValidateFirstName(userDto.FirstName))
             {
-                Console.WriteLine("Invalid first name. Please try again.");
-                user.FirstName = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's last name: ");
-            user.LastName = Console.ReadLine()!;
-            while (!_validationService.ValidateLastName(user.LastName))
-            {
-                Console.WriteLine("Invalid last name. Please try again.");
-                user.LastName = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's email: ");
-            user.Email = Console.ReadLine()!;
-            while (!_validationService.ValidateEmail(user.Email))
-            {
-                Console.WriteLine("Invalid email. Please try again.");
-                user.Email = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's phone number: ");
-            user.PhoneNumber = Console.ReadLine()!;
-            while (!_validationService.ValidatePhoneNumber(user.PhoneNumber))
-            {
-                Console.WriteLine("Invalid phone number. Please try again.");
-                user.PhoneNumber = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's address: ");
-            user.Address = Console.ReadLine()!;
-            while (!_validationService.ValidateAddress(user.Address))
-            {
-                Console.WriteLine("Invalid address. Please try again.");
-                user.Address = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's postal code: ");
-            user.PostalCode = Console.ReadLine()!;
-            while (!_validationService.ValidatePostalCode(user.PostalCode))
-            {
-                Console.WriteLine("Invalid postal code. Please try again.");
-                user.PostalCode = Console.ReadLine()!;
-            }
-            Console.Write("Enter the user's city: ");
-            user.City = Console.ReadLine()!;
-            while (!_validationService.ValidateCity(user.City))
-            {
-                Console.WriteLine("Invalid city. Please try again.");
-                user.City = Console.ReadLine()!;
+                Console.WriteLine("First name must be between 2 and 20 characters.");
+                Console.Write("Enter First Name: ");
+                userDto.FirstName = Console.ReadLine()!;
             }
 
-            userService.CreateUser(user);
+            Console.Write("Enter Last Name: ");
+            userDto.LastName = Console.ReadLine()!;
+            while (!_validationService.ValidateLastName(userDto.LastName))
+            {
+                Console.WriteLine("Last name must be between 2 and 30 characters.");
+                Console.Write("Enter Last Name: ");
+                userDto.LastName = Console.ReadLine()!;
+            }
+
+            Console.Write("Enter Email: ");
+            userDto.Email = Console.ReadLine()!;
+            while (!_validationService.ValidateEmail(userDto.Email))
+            {
+                Console.WriteLine("Please enter a valid email address.");
+                Console.Write("Enter Email: ");
+                userDto.Email = Console.ReadLine()!;
+            }
+
+            Console.Write("Enter Phone Number: ");
+            userDto.PhoneNumber = Console.ReadLine()!;
+            while (!_validationService.ValidatePhoneNumber(userDto.PhoneNumber))
+            {
+                Console.WriteLine("Please enter a valid phone number.");
+                Console.Write("Enter Phone Number: ");
+                userDto.PhoneNumber = Console.ReadLine()!;
+            }
+
+            Console.Write("Enter Address: ");
+            userDto.Address = Console.ReadLine()!;
+            while (!_validationService.ValidateAddress(userDto.Address))
+            {
+                Console.WriteLine("Please enter a valid address.");
+                Console.Write("Enter Address: ");
+                userDto.Address = Console.ReadLine()!;
+            }
+
+            Console.Write("Enter Postal Code: ");
+            userDto.PostalCode = Console.ReadLine()!;
+            while (!_validationService.ValidatePostalCode(userDto.PostalCode))
+            {
+                Console.WriteLine("Postal code must be 5 digits.");
+                Console.Write("Enter Postal Code: ");
+                userDto.PostalCode = Console.ReadLine()!;
+            }
+
+            Console.Write("Enter City: ");
+            userDto.City = Console.ReadLine()!;
+            while (!_validationService.ValidateCity(userDto.City))
+            {
+                Console.WriteLine("Please enter a valid city name.");
+                Console.Write("Enter City: ");
+                userDto.City = Console.ReadLine()!;
+            }
+
+            userService.CreateUser(userDto);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"User: {user.FirstName} {user.LastName} created successfully");
+            Console.WriteLine($"User: {userDto.FirstName} {userDto.LastName} created successfully");
             Console.ResetColor();
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();

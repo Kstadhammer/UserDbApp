@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Business.Interfaces;
 using Business.Models;
+using Business.Models.DTOs;
 
 namespace Business.Services;
 
@@ -29,25 +30,46 @@ public class UserService : IUserService
         }
     }
 
-    public void CreateUser(User user)
+    // Had trouble with implementing UserDto and UserResponseDto,
+    // So had some help from Claude AI to implement this
+    // From the beginning i didn't use the UserDto and UserResponseDto,
+    // I just used the User class directly.
+
+
+    public void CreateUser(UserDto userDto)
     {
-        user.Id = Guid.NewGuid().ToString();
+        var user = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            TimeCreated = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            FirstName = userDto.FirstName,
+            LastName = userDto.LastName,
+            Email = userDto.Email,
+            PhoneNumber = userDto.PhoneNumber,
+            Address = userDto.Address,
+            PostalCode = userDto.PostalCode,
+            City = userDto.City,
+        };
+
         _users.Add(user);
         _fileService.SaveUserToFile(JsonSerializer.Serialize(_users));
-        LoadUsers(); // Reload users after saving
+        LoadUsers();
     }
 
-    public IEnumerable<User> GetUsers()
-    {
-        LoadUsers(); // Reload users from file before returning
-        return _users;
-    }
-
-    //Got help from claude to fix the login method and also implenting it in IUserService
-
-    public User? Login(string username, string password)
+    public IEnumerable<UserResponseDto> GetUsers()
     {
         LoadUsers();
-        return _users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        return _users.Select(user => new UserResponseDto
+        {
+            Id = user.Id,
+            TimeCreated = user.TimeCreated,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            PhoneNumber = user.PhoneNumber,
+            Address = user.Address,
+            PostalCode = user.PostalCode,
+            City = user.City,
+        });
     }
 }

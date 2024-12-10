@@ -21,18 +21,13 @@ public class Program
                     services.AddTransient<IValidationService, ValidationService>();
                     services.AddTransient<ICreateUserDialog, CreateUserDialog>();
                     services.AddTransient<IShowAllUsersDialog, ShowAllUsersDialog>();
-                    //services.AddTransient<ISearchUserDialog, SearchUserDialog>();
-                    services.AddTransient<ILoginUserDialog, LoginUserDialog>();
                     services.AddTransient<IMainMenuDialog, MainMenuDialog>();
-                    //services.AddTransient<ICreateLoginUserDialog, CreateLoginUserDialog>();
                     services.AddTransient<IExitUserDialog, ExitUserDialog>();
                 }
             )
             .Build();
         using var scope = host.Services.CreateScope();
 
-        var loginUserDialog = scope.ServiceProvider.GetRequiredService<ILoginUserDialog>();
-        loginUserDialog.ShowLoginMenu();
         var mainMenuDialog = scope.ServiceProvider.GetRequiredService<IMainMenuDialog>();
         mainMenuDialog.ShowUserMenu();
     }
