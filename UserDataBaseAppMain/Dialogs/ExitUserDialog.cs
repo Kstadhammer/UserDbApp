@@ -8,6 +8,12 @@ namespace UserDataBaseAppMain.Dialogs;
 
 public class ExitUserDialog : IExitUserDialog
 {
+    // exit application method
+
+
+
+    // if user wants to exit, save and close application
+
     public void ShowDialog()
     {
         string[] options = new[] { "Yes, exit application", "No, return to menu" };

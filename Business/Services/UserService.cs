@@ -94,4 +94,11 @@ public class UserService : IUserService
         }
         return new UserResponseDto();
     }
+
+    public void DeleteUser(string id)
+    {
+        _users = _users.Where(user => user.Id != id).ToList();
+        _fileService.SaveUserToFile(JsonSerializer.Serialize(_users));
+        LoadUsers();
+    }
 }

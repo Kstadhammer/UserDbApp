@@ -1,31 +1,58 @@
+// This code allows the user to search for a user by their first name.
+// It prompts the user to enter a first name and checks if it's valid.
+// If a user is found, it displays their details; otherwise, it shows a message that no user was found.
+
 using System.Diagnostics;
 using Business.Interfaces;
 using Business.Models;
-using Business.Services;
+using Business.Models.DTOs;
 using UserDataBaseAppMain.Interfaces;
 
-namespace UserDataBaseAppMain.Dialogs
-{
-    public class SearchUserDialog(IUserService userService)
-    {
-        public void ShowDialog()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Search for a existing user:");
-            Console.Write("Enter the user's first name: ");
-            Console.ResetColor();
+namespace UserDataBaseAppMain.Dialogs;
 
-            var firstName = Console.ReadLine();
-            var user = userService.GetUserByFirstName(firstName);
-            if (user != null)
-            {
-                Console.WriteLine($"User found: {user.FirstName} {user.LastName}");
-            }
-            else
-            {
-                Console.WriteLine("User not found.");
-            }
+public class SearchUserDialog(IUserService userService) : ISearchUserDialog
+{
+    public void ShowDialog()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("Search for a user\n");
+        Console.ResetColor();
+
+        Console.Write("Enter first name to search: ");
+        var firstName = Console.ReadLine()?.Trim();
+
+        if (string.IsNullOrWhiteSpace(firstName))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nFirst name cannot be empty.");
+            Console.ResetColor();
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
+            return;
         }
+
+        //Gets user from userService using the first name of the user
+
+        var user = userService.GetUserByFirstName(firstName);
+
+        if (string.IsNullOrEmpty(user.FirstName))
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"\nNo user found with first name '{firstName}'");
+        }
+        else
+        {
+            Console.WriteLine($"\nUser found:");
+            Console.WriteLine($"Name: {user.FirstName} {user.LastName}");
+            Console.WriteLine($"Email: {user.Email}");
+            Console.WriteLine($"Phone: {user.PhoneNumber}");
+            Console.WriteLine($"Address: {user.Address}");
+            Console.WriteLine($"Postal Code: {user.PostalCode}");
+            Console.WriteLine($"City: {user.City}");
+        }
+
+        Console.WriteLine("\nPress any key to continue...");
+        Console.ReadKey();
     }
 }

@@ -21,6 +21,8 @@ public class Program
                     services.AddTransient<IValidationService, ValidationService>();
                     services.AddTransient<ICreateUserDialog, CreateUserDialog>();
                     services.AddTransient<IShowAllUsersDialog, ShowAllUsersDialog>();
+                    services.AddTransient<ISearchUserDialog, SearchUserDialog>();
+                    services.AddTransient<IDeleteUserDialog, DeleteUserDialog>();
                     services.AddTransient<IMainMenuDialog, MainMenuDialog>();
                     services.AddTransient<IExitUserDialog, ExitUserDialog>();
                 }

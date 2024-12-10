@@ -11,8 +11,9 @@ public class MainMenuDialog(
     IValidationService validationService,
     ICreateUserDialog createUserDialog,
     IShowAllUsersDialog showAllUsersDialog,
-    //ISearchUserDialog searchUserDialog,
-    IExitUserDialog exitUserDialog
+    ISearchUserDialog searchUserDialog,
+    IExitUserDialog exitUserDialog,
+    IDeleteUserDialog deleteUserDialog
 ) : IMainMenuDialog
 {
     private readonly IUserService _userService =
@@ -24,10 +25,15 @@ public class MainMenuDialog(
     private readonly IShowAllUsersDialog _showAllUsersDialog =
         showAllUsersDialog ?? throw new ArgumentNullException(nameof(showAllUsersDialog));
 
-    //private readonly ISearchUserDialog _searchUserDialog =
-    //  searchUserDialog ?? throw new ArgumentNullException(nameof(searchUserDialog));
+    private readonly ISearchUserDialog _searchUserDialog =
+        searchUserDialog ?? throw new ArgumentNullException(nameof(searchUserDialog));
     private readonly IExitUserDialog _exitUserDialog =
         exitUserDialog ?? throw new ArgumentNullException(nameof(exitUserDialog));
+    private readonly IDeleteUserDialog _deleteUserDialog =
+        deleteUserDialog ?? throw new ArgumentNullException(nameof(deleteUserDialog));
+
+    // Menu options which is using arrow keys to navigate
+    // rest of the code can be seen in the ConsoleHelper.ShowMenu() method
 
     private int _selectedIndex = 0;
     private readonly string[] _options =
@@ -54,10 +60,10 @@ public class MainMenuDialog(
                     _showAllUsersDialog.ShowDialog();
                     break;
                 case 2:
-                    //_searchUserDialog.ShowDialog();
+                    _searchUserDialog.ShowDialog();
                     break;
                 case 3:
-                    //_deleteUserDialog.ShowDialog();
+                    _deleteUserDialog.ShowDialog();
                     break;
                 case 4:
                     _exitUserDialog.ShowDialog();
