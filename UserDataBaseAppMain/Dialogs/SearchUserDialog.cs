@@ -22,6 +22,8 @@ public class SearchUserDialog(IUserService userService) : ISearchUserDialog
         Console.Write("Enter first name to search: ");
         var firstName = Console.ReadLine()?.Trim();
 
+        // Check if first name is empty
+
         if (string.IsNullOrWhiteSpace(firstName))
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -36,6 +38,7 @@ public class SearchUserDialog(IUserService userService) : ISearchUserDialog
 
         var user = userService.GetUserByFirstName(firstName);
 
+        // If user is not found, show message
         if (string.IsNullOrEmpty(user.FirstName))
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
