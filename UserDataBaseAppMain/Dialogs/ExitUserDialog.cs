@@ -16,8 +16,8 @@ public class ExitUserDialog : IExitUserDialog
 
     public void ShowDialog()
     {
-        string[] options = new[] { "Yes, exit application", "No, return to menu" };
-        int selectedIndex = 1; // Default to "No"
+        var options = new[] { "Yes, exit application", "No, return to menu" };
+        var selectedIndex = 1; // Default to "No"
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("\nAre you sure you want to exit?");
