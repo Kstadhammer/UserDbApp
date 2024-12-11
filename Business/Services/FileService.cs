@@ -20,10 +20,13 @@ public class FileService : IFileService
               - Up one level: C:\MyProject\bin\Debug
               - Up two levels: C:\MyProject\bin
               - Up three levels: C:\MyProject
+              -Now it creates a folder called Business/Data/Filename.json
+              where it stores all the userdata
               
               Used Claude AI for this
 
               Some of the code is used from Hans video on how to save to json file
+              and load from json after user has been added and when starting the application
         */
         string baseDirectory =
             Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
