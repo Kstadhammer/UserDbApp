@@ -44,6 +44,7 @@ public class SearchUserDialog(IUserService userService) : ISearchUserDialog
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\nNo user found with first name '{firstName}'");
         }
+        // if user is found, show user details
         else
         {
             Console.WriteLine($"\nUser found:");

@@ -37,6 +37,7 @@ public class EditUserDialog(IUserService userService, IValidationService validat
         Console.Write("\nEnter the ID of the user you want to edit (or 'exit' to return): ");
         string? input = Console.ReadLine();
 
+        // if user input is empty or exit return
         if (string.IsNullOrWhiteSpace(input) || input.ToLower() == "exit")
             return;
 
@@ -48,7 +49,7 @@ public class EditUserDialog(IUserService userService, IValidationService validat
             return;
         }
 
-        // Get updated information
+        // Get updated information from user
         var userDto = new UserDto();
 
         Console.WriteLine($"\nCurrent First Name: {userToEdit.FirstName}");
@@ -89,6 +90,8 @@ public class EditUserDialog(IUserService userService, IValidationService validat
         userDto.City = string.IsNullOrWhiteSpace(city) ? userToEdit.City : city;
 
         // Validate the updated information
+        // Had some trouble with this so had to get some help from Claude to get it to work
+
         if (!ValidateUserInput(userDto))
         {
             Console.WriteLine("\nValidation failed. Changes were not saved.");
@@ -102,6 +105,7 @@ public class EditUserDialog(IUserService userService, IValidationService validat
         ConsoleHelper.PressAnyKeyToContinue();
     }
 
+    // validates user input and returns true if valid or false if not
     private bool ValidateUserInput(UserDto userDto)
     {
         if (!validationService.ValidateFirstName(userDto.FirstName))
@@ -149,6 +153,8 @@ public class EditUserDialog(IUserService userService, IValidationService validat
             Console.WriteLine("Invalid city name. Must contain only letters and spaces.");
             return false;
         }
+
+        // if all validation passes return true
 
         return true;
     }

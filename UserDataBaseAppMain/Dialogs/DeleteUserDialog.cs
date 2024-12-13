@@ -18,11 +18,14 @@ public class DeleteUserDialog(IUserService userService) : IDeleteUserDialog
         Console.Write("Enter last name: ");
         var lastName = Console.ReadLine()?.Trim();
 
+        // if no user is found or first name and last name are empty
+
         if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
         {
             Console.WriteLine("First name and last name cannot be empty.");
             return;
         }
+        // if user is found and last name matches
 
         var user = userService.GetUserByFirstName(firstName);
         if (user.LastName == lastName)

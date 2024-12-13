@@ -15,6 +15,7 @@ public class Program
         var host = Host.CreateDefaultBuilder()
             .ConfigureServices(
                 (context, services) =>
+                // Register services with dependency injection
                 {
                     services.AddTransient<IFileService, FileService>();
                     services.AddSingleton<IUserService, UserService>();

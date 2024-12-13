@@ -14,6 +14,7 @@ public class ExitUserDialog : IExitUserDialog
 
     // if user wants to exit, save and close application
 
+
     public void ShowDialog()
     {
         var options = new[] { "Yes, exit application", "No, return to menu" };

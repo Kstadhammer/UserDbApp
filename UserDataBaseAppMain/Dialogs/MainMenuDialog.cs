@@ -17,6 +17,7 @@ public class MainMenuDialog(
     IEditUserDialog editUserDialog
 ) : IMainMenuDialog
 {
+    // Initialize services and dialogs, throwing an exception if any are null
     private readonly IUserService _userService =
         userService ?? throw new ArgumentNullException(nameof(userService));
     private readonly IValidationService _validationService =
@@ -35,45 +36,46 @@ public class MainMenuDialog(
     private readonly IEditUserDialog _editUserDialog =
         editUserDialog ?? throw new ArgumentNullException(nameof(editUserDialog));
 
-    // Menu options which is using arrow keys to navigate
-    // rest of the code can be seen in the ConsoleHelper.ShowMenu() method
-
+    // Menu options which can be navigated using arrow keys
     private int _selectedIndex = 0;
     private readonly string[] _options =
     {
-        "1. Add New User",
-        "2. View All Users",
-        "3. Find User by Name",
-        "4. Edit User",
-        "5. Remove User",
-        "6. Exit Application",
+        "1. Add New User", // Option to add a new user
+        "2. View All Users", // Option to view all users
+        "3. Find User by Name", // Option to search for a user by name
+        "4. Edit User", // Option to edit an existing user
+        "5. Remove User", // Option to delete a user
+        "6. Exit Application", // Option to exit the application
     };
 
+    // Method to display the user menu and handle user selections
     public void ShowUserMenu()
     {
-        while (true)
+        while (true) // Infinite loop to keep showing the menu
         {
+            // Display the menu and get the selected index
             _selectedIndex = ConsoleHelper.ShowMenu(_options, _selectedIndex);
 
+            // Execute the action based on the selected option
             switch (_selectedIndex)
             {
                 case 0:
-                    _createUserDialog.ShowDialog();
+                    _createUserDialog.ShowDialog(); // Show dialog to create a new user
                     break;
                 case 1:
-                    _showAllUsersDialog.ShowDialog();
+                    _showAllUsersDialog.ShowDialog(); // Show dialog to view all users
                     break;
                 case 2:
-                    _searchUserDialog.ShowDialog();
+                    _searchUserDialog.ShowDialog(); // Show dialog to search for a user
                     break;
                 case 3:
-                    _editUserDialog.ShowDialog();
+                    _editUserDialog.ShowDialog(); // Show dialog to edit a user
                     break;
                 case 4:
-                    _deleteUserDialog.ShowDialog();
+                    _deleteUserDialog.ShowDialog(); // Show dialog to delete a user
                     break;
                 case 5:
-                    _exitUserDialog.ShowDialog();
+                    _exitUserDialog.ShowDialog(); // Show dialog to exit the application
                     break;
             }
         }
