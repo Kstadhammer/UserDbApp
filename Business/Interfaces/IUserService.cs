@@ -9,4 +9,5 @@ public interface IUserService
     IEnumerable<UserResponseDto> GetUsers();
     UserResponseDto GetUserByFirstName(string firstName);
     void DeleteUser(string id);
+    void EditUser(string id, UserDto userDto);
 }

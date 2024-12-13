@@ -107,4 +107,10 @@ public static class ConsoleHelper
         Console.WriteLine($"\n❌ {message}");
         Console.ResetColor();
     }
+
+    public static void PressAnyKeyToContinue()
+    {
+        Console.WriteLine("\nPress any key to continue...");
+        Console.ReadKey();
+    }
 }

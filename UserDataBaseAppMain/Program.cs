@@ -23,6 +23,7 @@ public class Program
                     services.AddTransient<IShowAllUsersDialog, ShowAllUsersDialog>();
                     services.AddTransient<ISearchUserDialog, SearchUserDialog>();
                     services.AddTransient<IDeleteUserDialog, DeleteUserDialog>();
+                    services.AddTransient<IEditUserDialog, EditUserDialog>();
                     services.AddTransient<IMainMenuDialog, MainMenuDialog>();
                     services.AddTransient<IExitUserDialog, ExitUserDialog>();
                 }

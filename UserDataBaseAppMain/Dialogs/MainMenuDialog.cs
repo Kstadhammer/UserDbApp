@@ -13,7 +13,8 @@ public class MainMenuDialog(
     IShowAllUsersDialog showAllUsersDialog,
     ISearchUserDialog searchUserDialog,
     IExitUserDialog exitUserDialog,
-    IDeleteUserDialog deleteUserDialog
+    IDeleteUserDialog deleteUserDialog,
+    IEditUserDialog editUserDialog
 ) : IMainMenuDialog
 {
     private readonly IUserService _userService =
@@ -31,6 +32,8 @@ public class MainMenuDialog(
         exitUserDialog ?? throw new ArgumentNullException(nameof(exitUserDialog));
     private readonly IDeleteUserDialog _deleteUserDialog =
         deleteUserDialog ?? throw new ArgumentNullException(nameof(deleteUserDialog));
+    private readonly IEditUserDialog _editUserDialog =
+        editUserDialog ?? throw new ArgumentNullException(nameof(editUserDialog));
 
     // Menu options which is using arrow keys to navigate
     // rest of the code can be seen in the ConsoleHelper.ShowMenu() method
@@ -41,8 +44,9 @@ public class MainMenuDialog(
         "1. Add New User",
         "2. View All Users",
         "3. Find User by Name",
-        "4. Remove User",
-        "5. Exit Application",
+        "4. Edit User",
+        "5. Remove User",
+        "6. Exit Application",
     };
 
     public void ShowUserMenu()
@@ -63,9 +67,12 @@ public class MainMenuDialog(
                     _searchUserDialog.ShowDialog();
                     break;
                 case 3:
-                    _deleteUserDialog.ShowDialog();
+                    _editUserDialog.ShowDialog();
                     break;
                 case 4:
+                    _deleteUserDialog.ShowDialog();
+                    break;
+                case 5:
                     _exitUserDialog.ShowDialog();
                     break;
             }

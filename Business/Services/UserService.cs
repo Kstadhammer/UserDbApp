@@ -101,4 +101,23 @@ public class UserService : IUserService
         _fileService.SaveUserToFile(JsonSerializer.Serialize(_users));
         LoadUsers();
     }
+
+    public void EditUser(string id, UserDto userDto)
+    {
+        LoadUsers();
+        var user = _users.FirstOrDefault(u => u.Id == id);
+        if (user != null)
+        {
+            user.FirstName = userDto.FirstName;
+            user.LastName = userDto.LastName;
+            user.Email = userDto.Email;
+            user.PhoneNumber = userDto.PhoneNumber;
+            user.Address = userDto.Address;
+            user.PostalCode = userDto.PostalCode;
+            user.City = userDto.City;
+            
+            _fileService.SaveUserToFile(JsonSerializer.Serialize(_users));
+            LoadUsers();
+        }
+    }
 }
