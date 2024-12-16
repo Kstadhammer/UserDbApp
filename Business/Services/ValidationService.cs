@@ -11,13 +11,16 @@ public class ValidationService : IValidationService
 {
     public bool ValidateFirstName(string firstName)
     {
-        return !string.IsNullOrWhiteSpace(firstName)
-            && Regex.IsMatch(firstName, @"^[A-Za-z]{1,20}$");
+        if (firstName?.ToLower() == "null" || string.IsNullOrWhiteSpace(firstName))
+            return false;
+        return Regex.IsMatch(firstName, @"^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']{2,20}$");
     }
 
     public bool ValidateLastName(string lastName)
     {
-        return !string.IsNullOrWhiteSpace(lastName) && Regex.IsMatch(lastName, @"^[A-Za-z]{1,30}$");
+        if (lastName?.ToLower() == "null" || string.IsNullOrWhiteSpace(lastName))
+            return false;
+        return Regex.IsMatch(lastName, @"^[A-Za-zÀ-ÖØ-öø-ÿ\s\-']{2,30}$");
     }
 
     public bool ValidateEmail(string email)

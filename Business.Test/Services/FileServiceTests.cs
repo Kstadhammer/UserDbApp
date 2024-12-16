@@ -23,6 +23,7 @@ public class FileServiceTests
         _fileService = new FileService(_testFilePath);
     }
 
+    [Fact]
     //delete the test file after the tests are done
     public void DeleteTestFile_AfterTestsAreDone()
     {
@@ -31,5 +32,44 @@ public class FileServiceTests
         {
             File.Delete(_testFilePath);
         }
+    }
+
+    [Fact]
+    public void SaveUserToFile_ShouldCreateAFile()
+    {
+        // Arrange
+        var testData = "test data";
+
+        // Act
+        _fileService.SaveUserToFile(testData);
+
+        // Assert
+        Assert.True(File.Exists(_testFilePath));
+        Assert.Equal(testData, File.ReadAllText(_testFilePath));
+    }
+
+    [Fact]
+    public void GetFileContent_ShouldReturnTheFileContent()
+    {
+        // Get the file content from the file service and return it
+        // Arrange
+        var testData = "test data";
+        File.WriteAllText(_testFilePath, testData);
+        // Act
+        var result = _fileService.GetFileContent();
+
+        // Assert
+        Assert.Equal(testData, result);
+    }
+
+    [Fact]
+    public void GetFileContent_ShouldReturnEmptyStringIfFileDoesNotExist()
+    {
+        // Arrange
+        // Act
+        var result = _fileService.GetFileContent();
+
+        // Assert
+        Assert.Equal("[]", result);
     }
 }

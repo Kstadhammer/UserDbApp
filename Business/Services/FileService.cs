@@ -43,7 +43,7 @@ public class FileService : IFileService
             Directory.CreateDirectory(_saveDirectory);
         }
         using var streamWriter = new StreamWriter(_saveFilePath);
-        streamWriter.WriteLine(content);
+        streamWriter.Write(content);
     }
 
     public string GetFileContent()

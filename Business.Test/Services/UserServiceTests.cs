@@ -25,6 +25,14 @@ public class UserServiceTests
     public UserServiceTests()
     {
         _fileServiceMock = new Mock<IFileService>();
+
+        //set up the file service mock to return an empty list of users
+        //this is to test the error handling in the user service
+        //if the file is empty, the user service should return an empty list of users
+        //i got some help from Claude to implement this, since i was getting an error
+        //when i tried to use the same instance of the file service in the user service
+
+        _fileServiceMock.Setup(x => x.GetFileContent()).Returns("[]");
         _userService = new UserService(_fileServiceMock.Object);
         _testUsers = new List<User>
         {
