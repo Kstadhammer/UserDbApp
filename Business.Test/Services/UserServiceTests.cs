@@ -6,13 +6,15 @@ using Business.Services;
 using Microsoft.VisualBasic;
 //using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 //used https://www.roundthecode.com/dotnet-tutorials/moq-mocking-objects-xunit-dotnet for some help
 //also Claud AI for debugging and help with the code and error handling
+//i tried using Microsoft.VisualStudio.TestTools.UnitTesting but it was not working so i switched to xunit as in the videos from Hans
 
 namespace Business.Test.Services;
 
-//testing for user service
+//testing for user service using xunit and moq for the file service and the user service
 public class UserServiceTests
 {
     private readonly IUserService _userService;
@@ -49,7 +51,7 @@ public class UserServiceTests
         //test data for the user service
         //new user to add to the file
 
-        UserDto userDto = new UserDto
+        var userDto = new UserDto
         {
             FirstName = "Kimberly",
             LastName = "Hammerstadly",
