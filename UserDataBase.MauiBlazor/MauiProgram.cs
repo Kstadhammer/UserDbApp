@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using UserDataBase.MauiBlazor.Data.Interfaces;
+using UserDataBase.MauiBlazor.Data.Services;
 
 namespace UserDataBase.MauiBlazor
 {
@@ -17,9 +19,13 @@ namespace UserDataBase.MauiBlazor
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IFileService, FileService>();
+            builder.Services.AddScoped<IValidationService, ValidationService>();
 
             return builder.Build();
         }
