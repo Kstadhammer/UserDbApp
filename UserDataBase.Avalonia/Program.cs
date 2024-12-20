@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace UserDataBaseApp.Avalonia;
+namespace UserDataBase.Avalonia;
 
 sealed class Program
 {

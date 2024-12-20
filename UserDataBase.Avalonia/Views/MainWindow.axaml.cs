@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace UserDataBaseApp.Avalonia.Views;
+namespace UserDataBase.Avalonia.Views;
 
 public partial class MainWindow : Window
 {

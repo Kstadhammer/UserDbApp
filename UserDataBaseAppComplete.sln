@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Busine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Test", "Business.Test\Business.Test.csproj", "{217F9EB1-EFAA-43CC-99D3-D657F45B00FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDataBaseApp.Avalonia", "UserDataBaseApp.Avalonia\UserDataBaseApp.Avalonia.csproj", "{39076241-3B7E-42C5-B80A-144CBD95848A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDataBase.Avalonia", "UserDataBase.Avalonia\UserDataBase.Avalonia.csproj", "{FFDBD055-0FFD-4E41-8172-23C69B26E940}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{217F9EB1-EFAA-43CC-99D3-D657F45B00FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{217F9EB1-EFAA-43CC-99D3-D657F45B00FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{217F9EB1-EFAA-43CC-99D3-D657F45B00FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39076241-3B7E-42C5-B80A-144CBD95848A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39076241-3B7E-42C5-B80A-144CBD95848A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39076241-3B7E-42C5-B80A-144CBD95848A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39076241-3B7E-42C5-B80A-144CBD95848A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFDBD055-0FFD-4E41-8172-23C69B26E940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFDBD055-0FFD-4E41-8172-23C69B26E940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFDBD055-0FFD-4E41-8172-23C69B26E940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFDBD055-0FFD-4E41-8172-23C69B26E940}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
